@@ -12,7 +12,7 @@ return {
     window_decorations = "RESIZE",
 
     -- Set window transparency
-    window_background_opacity = 0.8,  -- Adjust this value (0.0 is fully transparent, 1.0 is opaque)
+    window_background_opacity = 0.9,  -- Adjust this value (0.0 is fully transparent, 1.0 is opaque)
 
     -- Key bindings
     keys = {
