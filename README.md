@@ -28,7 +28,7 @@ Ensure the following are installed:
 ---
 
 ## 🚀 Installation
-##⚠️ Must Clone in  Downloads folder in Your System
+## ⚠️ Must Clone in  Downloads folder in Your System
 
 1. **Clone the repository**
    ```bash
