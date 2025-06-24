@@ -82,6 +82,14 @@ case "$answer" in
         ;;
 esac
 
+if command -v fzf >/dev/null; then
+    echo "fzf is already installed ✅"
+else
+    echo "fzf is not installed ❌"
+    echo "Installing fzf via yay..."
+    yay -S --noconfirm fzf
+fi
+
 source ~/.zshrc
 echo "🎉 Setup complete. Please restart your terminal or run 'zsh' to begin."
 
