@@ -60,23 +60,32 @@ else
 fi
 
 # === Step 10: Prompt for custom Powerlevel10k ===
-read -p "Do you want to apply the pre-customized Powerlevel10k theme? (y/n): " answer
+
+read -rp "Do you want to apply the pre-customized Powerlevel10k theme? (y/n): " answer
+
+THEME_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+CUSTOM_P10K="$HOME/Downloads/Customized-WezTerminal/config/percustomized_files/.p10k.zsh"
+
 case "$answer" in
     [yY])
-        if [ -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.p10k.zsh ]; then
-            THEME_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-            git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$THEME_DIR"
-            mv -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.p10k.zsh "$HOME/.p10k.zsh"
-            echo "✅ .p10k.zsh applied."
+        echo "🎨 Applying pre-customized Powerlevel10k theme..."
+        if [ -f "$CUSTOM_P10K" ]; then
+            if [ ! -d "$THEME_DIR" ]; then
+                git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$THEME_DIR"
+            fi
+            mv -f "$CUSTOM_P10K" "$HOME/.p10k.zsh"
+            echo "✅ Custom .p10k.zsh applied successfully."
         else
-            echo "⚠️ .p10k.zsh not found in zip."
+            echo "⚠️  Custom .p10k.zsh not found in: $CUSTOM_P10K"
         fi
         ;;
     [nN])
-        THEME_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+        echo "💠 Installing default Powerlevel10k theme..."
         if [ ! -d "$THEME_DIR" ]; then
             git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$THEME_DIR"
             echo "✅ Powerlevel10k default theme cloned."
+        else
+            echo "ℹ️  Powerlevel10k already installed."
         fi
         ;;
     *)
@@ -84,14 +93,22 @@ case "$answer" in
         ;;
 esac
 
-if command -v fzf >/dev/null; then
-    echo "fzf is already installed ✅"
+# === Step 11: Check and install fzf ===
+if command -v fzf >/dev/null 2>&1; then
+    echo "✅ fzf is already installed."
 else
-    echo "fzf is not installed ❌"
-    echo "Installing fzf via yay..."
-    yay -S --noconfirm fzf
+    echo "⚙️  fzf is not installed. Installing via yay..."
+    if command -v yay >/dev/null 2>&1; then
+        yay -S --noconfirm fzf
+    else
+        echo "❌ 'yay' not found. Please install fzf manually or install yay first."
+    fi
 fi
 
-source ~/.zshrc
-echo "🎉 Setup complete. Please restart your terminal or run 'zsh' to begin."
+echo ""
+echo "🎉 Setup complete!"
+echo "➡️  Restarting your terminal to apply changes..."
 
+# === Step 12: Restart terminal ===
+sleep 2
+exec zsh
