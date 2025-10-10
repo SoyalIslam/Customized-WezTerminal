@@ -1,7 +1,7 @@
 #!/bin/bash
-
 # === Step 1: Install zsh and fastfetch ===
 sudo pacman -S --noconfirm fastfetch
+unzip -o ~/Downloads/Customized-WezTerminal/config/percustomized_files.zip -d ~/Downloads/Customized-WezTerminal/config/
 yay -S --noconfirm zsh
 echo "✅ zsh is installed successfully!"
 
@@ -39,21 +39,21 @@ fi
 # === Step 7: Fastfetch Config ===
 FASTFETCH_DIR="$HOME/.config/fastfetch"
 mkdir -p "$FASTFETCH_DIR"
-mv -f ~/Downloads/config/config.jsonc "$FASTFETCH_DIR/"
-mv -f ~/Downloads/config/try2.png "$FASTFETCH_DIR/"
-mv -f ~/Downloads/config/backup "$FASTFETCH_DIR/"
+mv -f ~/Downloads/Customized-WezTerminal/config/config.jsonc "$FASTFETCH_DIR/"
+mv -f ~/Downloads/Customized-WezTerminal/config/try2.png "$FASTFETCH_DIR/"
+mv -f ~/Downloads/Customized-WezTerminal/config/backup "$FASTFETCH_DIR/"
 echo "✅ Fastfetch config moved."
 
 # === Step 8: Wezterm Config ===
 WEZTERM_DIR="$HOME/.config/wezterm"
 mkdir -p "$WEZTERM_DIR"
-mv -f ~/Downloads/config/wezterm.lua "$WEZTERM_DIR/"
+mv -f ~/Downloads/Customized-WezTerminal/config/wezterm.lua "$WEZTERM_DIR/"
 echo "✅ Wezterm config moved."
 
 # === Step 9: Unzip and move .zshrc ===
-if [ -f ~/Downloads/config/percustomized_files.zip ]; then
-    unzip -o ~/Downloads/config/percustomized_files.zip -d ~/Downloads/config/
-    mv -f ~/Downloads/config/percustomized_files.zshrc "$HOME/.zshrc"
+if [ -f ~/Downloads/Customized-WezTerminal/config/percustomized_files.zip ]; then
+    rm -f "$HOME/.zshrc"
+    mv -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.zshrc "$HOME/.zshrc"
     echo "✅ .zshrc updated from zip."
 else
     echo "⚠️ Zip file not found."
@@ -63,8 +63,10 @@ fi
 read -p "Do you want to apply the pre-customized Powerlevel10k theme? (y/n): " answer
 case "$answer" in
     [yY])
-        if [ -f ~/Downloads/config/percustomized_files/.p10k.zsh ]; then
-            mv -f ~/Downloads/config/percustomized_files/.p10k.zsh "$HOME/.p10k.zsh"
+        if [ -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.p10k.zsh ]; then
+            THEME_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+            git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$THEME_DIR"
+            mv -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.p10k.zsh "$HOME/.p10k.zsh"
             echo "✅ .p10k.zsh applied."
         else
             echo "⚠️ .p10k.zsh not found in zip."
