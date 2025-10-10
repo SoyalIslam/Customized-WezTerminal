@@ -53,7 +53,7 @@ echo "✅ Wezterm config moved."
 # === Step 9: Unzip and move .zshrc ===
 if [ -f ~/Downloads/Customized-WezTerminal/config/percustomized_files.zip ]; then
     rm -f "$HOME/.zshrc"
-    mv -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.zshrc "$HOME/.zshrc"
+    mv -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.zshrc "$HOME/"
     echo "✅ .zshrc updated from zip."
 else
     echo "⚠️ Zip file not found."
