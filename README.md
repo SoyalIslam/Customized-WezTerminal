@@ -38,11 +38,11 @@ Ensure the following are installed:
    chmod +x installation_zsh_wezterm.sh
    ./installation_zsh_wezterm.sh
    
-##🧭 Set Zsh as Default Shell
+## 🧭 Set Zsh as Default Shell
 
 After running the installation script, you can make Zsh your default shell so that every new terminal session automatically uses it.
 
-##🧩 Steps:
+## 🧩 Steps:
 
 Check your current shell
 
@@ -63,7 +63,7 @@ Change the default shell to Zsh
 ```chsh -s $(which zsh)```
 
 
-##💡 You’ll be asked to enter your password.
+## 💡 You’ll be asked to enter your password.
 
 Restart your terminal
 
