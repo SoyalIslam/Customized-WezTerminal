@@ -38,3 +38,42 @@ Ensure the following are installed:
    chmod +x installation_zsh_wezterm.sh
    ./installation_zsh_wezterm.sh
    
+##🧭 Set Zsh as Default Shell
+
+After running the installation script, you can make Zsh your default shell so that every new terminal session automatically uses it.
+
+##🧩 Steps:
+
+Check your current shell
+
+```echo $SHELL```
+
+
+If it shows something like /bin/bash, that means Bash is still the default.
+
+Find the Zsh binary path
+
+```which zsh```
+
+
+Usually, it’s /usr/bin/zsh.
+
+Change the default shell to Zsh
+
+```chsh -s $(which zsh)```
+
+
+##💡 You’ll be asked to enter your password.
+
+Restart your terminal
+
+Close and reopen your terminal, or log out and back in.
+
+You should now see the Powerlevel10k configuration wizard appear automatically on first launch.
+
+Verify it worked
+
+```echo $SHELL```
+
+
+Output should now be /usr/bin/zsh.
