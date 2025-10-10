@@ -55,11 +55,6 @@ if command -v yay &> /dev/null; then
     echo "✅ yay removed."
 fi
 
-if command -v zsh &> /dev/null; then
-    sudo pacman -Rns --noconfirm zsh
-    echo "✅ zsh removed."
-fi
-
 if command -v fastfetch &> /dev/null; then
     sudo pacman -Rns --noconfirm fastfetch
     echo "✅ fastfetch removed."
