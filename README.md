@@ -32,6 +32,7 @@ Ensure the following are installed:
 
 1. **Clone the repository**
    ```bash
+   cd Downloads
    git clone https://github.com/SoyalIslam/Customized-WezTerminal.git
    cd Customized-WezTerminal/config
    chmod +x installation_zsh_wezterm.sh
