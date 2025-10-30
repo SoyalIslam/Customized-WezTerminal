@@ -58,9 +58,9 @@ Find the Zsh binary path
 
 Usually, it’s /usr/bin/zsh.
 
-Change the default shell to Zsh
+Change the default shell to Zsh for root
 
-```chsh -s $(which zsh)```
+```sudo chsh -s /bin/zsh root```
 
 
 ## 💡 You’ll be asked to enter your password.
