@@ -72,7 +72,8 @@ echo "✅ Wezterm config moved."
 if [ -f ~/Downloads/Customized-WezTerminal/config/percustomized_files.zip ]; then
     rm -f "$HOME/.zshrc"
     mv -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.zshrc "$HOME/"
-    echo "✅ .zshrc updated from zip."
+    mv -f ~/Downloads/Customized-WezTerminal/config/percustomized_files/.oh-my-zsh "$HOME/"
+    echo "✅ .zshrc and oh-my-zsh are updated from zip."
 else
     echo "⚠️ Zip file not found."
 fi
